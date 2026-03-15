@@ -1,0 +1,344 @@
+.page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+/* ── Background slideshow ── */
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.bgSlide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.bgActive {
+  opacity: 1;
+}
+
+.bgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 26, 18, 0.92) 0%,
+    rgba(15, 45, 28, 0.80) 50%,
+    rgba(10, 26, 18, 0.88) 100%
+  );
+}
+
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(77,171,122,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(77,171,122,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* ── Content layout ── */
+.content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ── Left branding panel ── */
+.panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 32px;
+}
+
+.panelInner {
+  max-width: 380px;
+  animation: fadeSlideUp 0.7s var(--ease-out) both;
+}
+
+.logoMark {
+  margin-bottom: 20px;
+}
+
+.panelTitle {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5rem);
+  color: var(--gold-300);
+  line-height: 1;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.panelSubtitle {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green-300);
+  margin-bottom: 20px;
+}
+
+.panelDesc {
+  font-size: 15px;
+  color: rgba(249,245,235,0.65);
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+
+.panelStats {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.panelStat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.statNum {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--gold-300);
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green-300);
+}
+
+.panelStatDivider {
+  width: 1px;
+  height: 32px;
+  background: rgba(77,171,122,0.25);
+}
+
+/* ── Right form side ── */
+.formSide {
+  width: 440px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: rgba(10, 26, 18, 0.5);
+  backdrop-filter: blur(20px);
+  border-left: 1px solid rgba(77,171,122,0.15);
+}
+
+.card {
+  width: 100%;
+  max-width: 380px;
+  animation: fadeSlideUp 0.6s 0.1s var(--ease-out) both;
+}
+
+/* ── Card header ── */
+.cardHeader {
+  margin-bottom: 28px;
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--text-inverse);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.cardSub {
+  font-size: 14px;
+  color: var(--green-300);
+}
+
+/* ── Error banner ── */
+.errorBanner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(248,113,113,0.12);
+  border: 1px solid rgba(248,113,113,0.3);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #fca5a5;
+  margin-bottom: 20px;
+}
+
+/* ── Form ── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green-200, var(--green-300));
+  letter-spacing: 0.02em;
+}
+
+.inputWrap {
+  position: relative;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--green-400);
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 44px 12px 42px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(77,171,122,0.25);
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  color: var(--text-inverse);
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+
+.input::placeholder {
+  color: var(--green-400);
+  opacity: 0.6;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--green-400);
+  background: rgba(255,255,255,0.09);
+  box-shadow: 0 0 0 3px rgba(77,171,122,0.15);
+}
+
+.input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.togglePass {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--green-400);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.15s;
+}
+
+.togglePass:hover { color: var(--green-300); }
+
+/* ── Submit button ── */
+.submitBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px;
+  margin-top: 4px;
+  background: linear-gradient(135deg, var(--green-600), var(--green-500));
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 16px rgba(56,145,99,0.35);
+}
+
+.submitBtn:hover:not(:disabled) {
+  opacity: 0.92;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(56,145,99,0.45);
+}
+
+.submitBtn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btnSpinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Hint ── */
+.hint {
+  margin-top: 20px;
+  font-size: 12px;
+  color: rgba(122,158,138,0.7);
+  text-align: center;
+  line-height: 1.8;
+}
+
+.hint code {
+  background: rgba(77,171,122,0.12);
+  border-radius: 4px;
+  padding: 1px 6px;
+  font-family: 'Courier New', monospace;
+  color: var(--green-300);
+  font-size: 11px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .panel { display: none; }
+  .formSide {
+    width: 100%;
+    border-left: none;
+    background: rgba(10, 26, 18, 0.65);
+  }
+}
+
+@media (max-width: 480px) {
+  .formSide { padding: 24px 20px; }
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

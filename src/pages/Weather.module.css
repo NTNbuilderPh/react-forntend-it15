@@ -1,0 +1,204 @@
+.page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px 24px 48px;
+  animation: fadeSlideUp 0.5s var(--ease-out) both;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Page header ── */
+.pageHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.pageTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin-bottom: 5px;
+}
+
+.pageSub {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.poweredBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--green-50);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--green-700);
+  white-space: nowrap;
+}
+
+/* ── Two-column layout ── */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+  align-items: start;
+}
+
+.mainCol {
+  min-width: 0;
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Info card */
+.infoCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.infoTitle {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+}
+
+.infoList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.infoList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.infoList svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* UV / climate card */
+.uvCard {
+  background: linear-gradient(135deg, var(--green-900), var(--green-800));
+  border: 1px solid var(--green-700);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-md);
+}
+
+.uvHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold-300);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 12px;
+}
+
+.uvText {
+  font-size: 13px;
+  color: var(--green-300);
+  line-height: 1.7;
+}
+
+.uvText strong {
+  color: var(--gold-300);
+}
+
+/* API info card */
+.apiCard {
+  background: var(--green-50);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+}
+
+.apiLabel {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.apiCode {
+  display: block;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--green-700);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 6px 10px;
+  word-break: break-all;
+  margin-bottom: 6px;
+}
+
+.apiSub {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page { padding: 20px 16px 40px; }
+
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .uvCard {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    grid-template-columns: 1fr;
+  }
+
+  .uvCard {
+    grid-column: span 1;
+  }
+}
